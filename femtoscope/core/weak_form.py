@@ -781,7 +781,7 @@ class WeakForm:
         (ii) can be serialized and thus save using pickle.
         The second requirement implies that user defined functions are not
         registered in the process. We get rid of all 'pre_term's and replace
-        them by a dummy 'dw_laplace' term.
+        them by a dummy 'de_laplace' term.
 
         Returns
         -------
@@ -795,7 +795,7 @@ class WeakForm:
         """
         args_dict = self._reconstruct_args_dict()
         _remove_functions_from_args_dict(args_dict)
-        args_dict['pre_terms'] = [PreTerm('dw_laplace')]
+        args_dict['pre_terms'] = [PreTerm('de_laplace')]
         return args_dict
 
     def _reconstruct_args_dict(self):
@@ -1133,7 +1133,7 @@ class WeakForm:
                     val = np.zeros(coors.shape[0])
                     return {'val': val.reshape(-1, 1, 1)}
                 dummy_term = PreTerm(
-                    'dw_laplace', mat=mat_zero, prefactor=0, tag=tag)
+                    'de_laplace', mat=mat_zero, prefactor=0, tag=tag)
                 self.pre_terms.append(dummy_term)
 
 
