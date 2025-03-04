@@ -857,4 +857,4 @@ def _get_diffusion_term_name(dim, coorsys):
     if dim == 2 and coorsys == 'polar':
         return 'dw_diffusion'
     else:
-        return 'dw_laplace'
+        return 'de_laplace'
