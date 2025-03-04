@@ -33,9 +33,9 @@ def weak_form(fem_order):
 
     pre_mesh = generate_mesh_from_geo(
         'rectangle_test', param_dict={'size': 0.5})
-    pre_term_300 = PreTerm('dw_laplace', region_key=('subomega', 300),
+    pre_term_300 = PreTerm('de_laplace', region_key=('subomega', 300),
                            prefactor=5.0, mat=material)
-    pre_term_301 = PreTerm('dw_laplace', region_key=('subomega', 301),
+    pre_term_301 = PreTerm('de_laplace', region_key=('subomega', 301),
                            prefactor=2.0, mat=1.0)
     pre_term_omega = PreTerm('dw_integrate', region_key=('omega', -1),
                              prefactor=1.0)
@@ -75,9 +75,9 @@ def sfepy_problem(fem_order):
     u = FieldVariable('u', 'unknown', field)
     v = FieldVariable('v', 'test', field, primary_var_name='u')
     integral = Integral('i', order=2*fem_order+1)
-    t1 = Term.new('dw_laplace(mat.val, v, u)', integral, subomega300, v=v, u=u,
+    t1 = Term.new('de_laplace(mat.val, v, u)', integral, subomega300, v=v, u=u,
                   mat=mat)
-    t2 = Term.new('dw_laplace(v, u)', integral, subomega301, v=v, u=u)
+    t2 = Term.new('de_laplace(v, u)', integral, subomega301, v=v, u=u)
     t3 = Term.new('dw_integrate(v)', integral, omega, v=v)
     eq = Equation('Poisson', 5*t1 + 2*t2 + t3)
     eqs = Equations([eq])
@@ -207,7 +207,7 @@ def test_fill_region_dict_from_dim_func():
         return np.where(np.isclose(coors[:, 0], 1.0))[0]
 
     pre_mesh = generate_mesh_from_geo('rectangle_test', param_dict={'size': 0.2})
-    pre_term = PreTerm('dw_laplace')
+    pre_term = PreTerm('de_laplace')
     dim_func_entities = [(1, middle_line, 201)]
     args_dict = {'dim': 2, 'pre_mesh': pre_mesh, 'pre_terms': [pre_term],
                  'fem_order': 1, 'dim_func_entities': dim_func_entities}
@@ -274,7 +274,7 @@ def test_assign_periodic_bc(fem_order):
     # Creation of the weak form with periodic boundary conditions
     pre_mesh = generate_mesh_from_geo(
         'square_periodic_test', param_dict={'size': 1.0}, show_mesh=False)
-    pre_term = PreTerm('dw_laplace', region_key=('omega', -1))
+    pre_term = PreTerm('de_laplace', region_key=('omega', -1))
     args_dict = {'dim': 2, 'pre_mesh': pre_mesh,
                  'dim_func_entities': dim_func_entities,
                  'pre_epbc_list': pre_epbc_list,
