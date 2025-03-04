@@ -101,10 +101,10 @@ def wfs_ellipsoid_2d():
         return {'val': val}
 
     # Terms
-    t1_int = PreTerm('dw_laplace', mat=mat_laplacian_int)
+    t1_int = PreTerm('de_laplace', mat=mat_laplacian_int)
     t2_int = PreTerm('dw_integrate', mat=mat_rho_int, prefactor=4*pi,
                      region_key=('subomega', 300))
-    t1_ext = PreTerm('dw_laplace', mat=mat_laplacian1_ext)
+    t1_ext = PreTerm('de_laplace', mat=mat_laplacian1_ext)
     t2_ext = PreTerm('dw_s_dot_mgrad_s', mat=mat_laplacian2_ext)
 
     # WeakForm creations
