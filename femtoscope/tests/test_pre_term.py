@@ -10,7 +10,7 @@ from femtoscope.core.pre_term import PreTerm
 
 @pytest.fixture()
 def input_args_dict():
-    return {'name': 'dw_laplace',
+    return {'name': 'de_laplace',
             'region_key': ('subomega', 300),
             'tag': 'cst',
             'prefactor': 2.0,
