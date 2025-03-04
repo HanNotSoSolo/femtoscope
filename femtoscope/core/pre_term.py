@@ -166,8 +166,8 @@ def _check_name(name: str):
     if name not in term_table:
         raise NameError(
             f"Name {name} is not a valid Sfepy term name: {term_table.keys()}")
-    if name.split('_')[0] != 'dw':
-        raise NameError("Term name should start with 'dw_'")
+    if name.split('_')[0] != 'dw' and name.split('_')[0] != 'de':  # Matthieu was here :-P
+        raise NameError("Term name should start with 'dw_' or 'de_'")  # Matthieu was here :-P
 
 
 def _check_region_key(region_key: tuple):
