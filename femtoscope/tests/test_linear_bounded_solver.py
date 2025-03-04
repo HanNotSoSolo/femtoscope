@@ -72,7 +72,7 @@ def wf_poisson_2d():
         return {'val': val.reshape(coors.shape[0], 1, 1)}
 
     # Terms
-    lhs = PreTerm('dw_laplace')
+    lhs = PreTerm('de_laplace')
     rhs = PreTerm('dw_integrate', mat=mat_rhs, prefactor=-1)
 
     # EBC
@@ -121,7 +121,7 @@ def wf_helmholtz_1d():
     pre_mesh = generate_uniform_1d_mesh(0, 1, 100, 'mesh_1d')
 
     # Terms
-    t1 = PreTerm('dw_laplace')
+    t1 = PreTerm('de_laplace')
     t2 = PreTerm('dw_dot')
     t3 = PreTerm('dw_integrate', prefactor=-1)
 
@@ -190,7 +190,7 @@ def wf_potential():
         return {'val': val}
 
     # Terms
-    lhs = PreTerm('dw_laplace', mat=mat_laplacian)
+    lhs = PreTerm('de_laplace', mat=mat_laplacian)
     rhs = PreTerm('dw_integrate', mat=mat_rho, prefactor=4 * pi,
                   region_key=('subomega', 300))
 
