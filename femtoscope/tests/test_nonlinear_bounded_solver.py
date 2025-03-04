@@ -57,7 +57,7 @@ class TestLaneEmden:
             if mode != 'qp': return
             val = coors.squeeze() ** 2
             return {'val': val.reshape(-1, 1, 1)}
-        t1 = PreTerm('dw_laplace', mat=mat1, tag='cst')
+        t1 = PreTerm('de_laplace', mat=mat1, tag='cst')
 
         def mat2(ts, coors, mode=None, vec_qp=None, **kwargs):
             if mode != 'qp': return
@@ -105,7 +105,7 @@ class TestLaneEmden:
             if mode != 'qp': return
             val = coors.squeeze() ** 2
             return {'val': val.reshape(-1, 1, 1)}
-        t1 = PreTerm('dw_laplace', mat=mat1, tag='cst')
+        t1 = PreTerm('de_laplace', mat=mat1, tag='cst')
 
         def mat2(ts, coors, mode=None, vec_qp=None, **kwargs):
             if mode != 'qp': return
@@ -204,7 +204,7 @@ class TestKleinGordon1D:
             val = coors.squeeze() ** 2
             return {'val': val.reshape(-1, 1, 1)}
 
-        t1 = PreTerm('dw_laplace', mat=mat1, tag='cst', prefactor=cls.alpha)
+        t1 = PreTerm('de_laplace', mat=mat1, tag='cst', prefactor=cls.alpha)
 
         def mat2(ts, coors, mode=None, vec_qp=None, **kwargs):
             if mode != 'qp': return
@@ -261,7 +261,7 @@ class TestKleinGordon1D:
             val = coors.squeeze() ** 2
             return {'val': val.reshape(-1, 1, 1)}
 
-        t1 = PreTerm('dw_laplace', mat=mat1, tag='cst', prefactor=cls.alpha)
+        t1 = PreTerm('de_laplace', mat=mat1, tag='cst', prefactor=cls.alpha)
 
         def mat2(ts, coors, mode=None, vec_qp=None, **kwargs):
             if mode != 'qp': return
