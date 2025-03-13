@@ -26,8 +26,8 @@ dependencies:
   - pytest
   - python-mumps
   - pyvista
-  - sfepy>=2024.3
   - scipy
+  - sfepy>=2024.3
   - sympy
   - pip:
     - gmsh==4.11.1
