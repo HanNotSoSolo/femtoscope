@@ -13,6 +13,7 @@ dependencies:
   - m2w64-gcc-libs-core  # Comment for Linux use
   - matplotlib
   - meshio==4.4.6
+# - mkl  # for debug
   - numpy<2
   - pandas
   - pip
