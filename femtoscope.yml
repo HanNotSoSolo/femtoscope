@@ -30,6 +30,6 @@ dependencies:
   - scipy
   - sympy
   - pip:
-    - gmsh==4.11.1
+    - gmsh
     - jax>=0.4.26
     - pdoc>=14.5.1
